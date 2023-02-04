@@ -4,15 +4,12 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-
 model_pickle = open("./artefacts/classifier.pkl", "rb")
 clf = pickle.load(model_pickle)
-
 
 @app.route("/ping", methods=['GET'])
 def ping():
     return {"message": "Hi there, I'm working with the new API!!"}
-
 
 @app.route("/params", methods=['GET'])
 def get_application_params():
@@ -26,7 +23,6 @@ def get_application_params():
     'LoanAmount': "<Loan Amount>"
     }
     return parameters
-
 
 ##defining the endpoint which will make the prediction
 @app.route("/predict", methods=['POST'])
